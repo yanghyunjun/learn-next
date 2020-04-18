@@ -1,62 +1,44 @@
-# TypeScript Next.js example
+# Setting with React,Next,typscript,eslint
 
-This is a really simple project that shows the usage of Next.js with TypeScript.
-
-## Deploy your own
-
-Deploy the example using [ZEIT Now](https://zeit.co/now):
-
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/zeit/next.js/tree/canary/examples/with-typescript)
-
-## How to use it?
-
-### Using `create-next-app`
-
-Execute [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npm init next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
-```
-
-### Download manually
-
-Download the example:
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-typescript
-cd with-typescript
-```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
-
-Deploy it to the cloud with [ZEIT Now](https://zeit.co/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-## Notes
-
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
+    nextjs with typescript
 
 ```
-npm install --save-dev typescript
-```
-
-To enable TypeScript's features, we install the type declarations for React and Node.
+npx create-next-app -e with-typescript learn-next
 
 ```
-npm install --save-dev @types/react @types/react-dom @types/node
+
+    eslint install
+
+```
+npm install eslint --global
+
+eslint --init
+
+option
+    yarn add eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin babel-eslint eslint-config-react-app eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks webpack --dev
+
 ```
 
-When we run `next dev` the next time, Next.js will start looking for any `.ts` or `.tsx` files in our project and builds it. It even automatically creates a `tsconfig.json` file for our project with the recommended settings.
+# learn getInitialProps
 
-Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
+    -서버로부터 데이터를 불러오기위한 nextJS의 기본 API
+    -서버에서 fetch를 사용하기 위해서는
+        isomorphic-unfetch를 사용한다.
 
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
+```
+$ yarn add isomorphic-unfetch
+```
+
+## learn getInitialProps
+
+```
+index.getInitialProps = async () => {
+    const data = await fetch("api주소 or json");
+    const json = await data.json();
+    return {movies:json.data.movies}
+}
+```
+
+### learn getInitialProps
+
+    getInitialProps는 NextPageContext타입으로 err, req, res, pathname, query ,asPath ,AppTree 을 가지고있다.

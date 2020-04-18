@@ -1,15 +1,18 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import React from "react";
+import { NextPage } from "next";
+import fetch from "isomorphic-unfetch";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const index: NextPage<{ shows: string }> = ({ shows }) => {
+  console.log(shows);
+  return <div>hello world</div>;
+};
 
-export default IndexPage
+index.getInitialProps = async () => {
+  const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
+  const data = await res.json();
+  return {
+    shows: data,
+  };
+};
+
+export default index;
